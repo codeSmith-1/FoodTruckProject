@@ -9,16 +9,19 @@ public class FoodTruckApp {
 	public static void main(String[] args) {
 		Scanner kb = new Scanner(System.in);
 
+		FoodTruckApp app = new FoodTruckApp();
+
 		boolean addTrucks = true;
 		int maxTrucks = 5;
 		int numOfTrucks = 0;
-		
+
 		FoodTruck[] trucks = new FoodTruck[maxTrucks];
 
 		for (int i = 0; i < maxTrucks; i++) {
 			FoodTruck truck = new FoodTruck();
 
-			System.out.println("Name of truck: ");
+			System.out.println("Name of food truck: ");
+			
 			String input = kb.next();
 			if (input.equalsIgnoreCase("quit")) {
 				break;
@@ -35,8 +38,7 @@ public class FoodTruckApp {
 			truck.setTruckId(i);
 
 			trucks[i] = truck;
-			System.out.println(truck.getTruckID());
-	
+
 			numOfTrucks++;
 		}
 
@@ -44,28 +46,60 @@ public class FoodTruckApp {
 		boolean start = true;
 
 		while (start) {
+			System.out.println();
 			System.out.println("_______MENU______");
 			System.out.println("1) See list of food trucks");
 			System.out.println("2) See average rating of food trucks");
 			System.out.println("3) Display highest rated food truck");
 			System.out.println("4) Quit");
+			System.out.println();
 
 			System.out.print("Selet an option:");
 			int userSelect = kb.nextInt();
 
 			switch (userSelect) {
 			case 1:
-				truck.getTrucks(trucks, numOfTrucks);
+				app.getTrucks(trucks, numOfTrucks);
 				break;
-
+			case 2:
+				app.getAverage(trucks, numOfTrucks);
+				break;
+			case 3:
+				app.getHigh(trucks, numOfTrucks);
+				break;
+			case 4:
+				System.out.println("Come back when you're hungry!");
+				start = false;
+				break;
 			default:
-				break;
+				System.err.println("Command not recognized.");
 			}
 		}
-
 	}
 
-}
+	public void getTrucks(FoodTruck[] array, int numOfTrucks) {
+		for (int i = 0; i < numOfTrucks; i++) {
+			System.out.println(array[i]);
+		}
+	}
 
-// create array of foodtrucks
-// if statements
+	public void getAverage(FoodTruck[] arr, int numOfTrucks) {
+		double sum = 0;
+		for (int i = 0; i < numOfTrucks; i++) {
+			int rating = arr[i].getRating();
+			sum += rating;
+		}
+		System.out.println("The average rating is : " + (sum / numOfTrucks));
+	}
+
+	public void getHigh(FoodTruck[] arr, int numOfTrucks) {
+
+		FoodTruck maxRating = arr[0];
+		for (int i = 1; i < numOfTrucks; i++) {
+			if (arr[i].getRating() > maxRating.getRating()) {
+				maxRating = arr[i];
+			}
+		}
+		System.out.println(maxRating);
+	}
+}

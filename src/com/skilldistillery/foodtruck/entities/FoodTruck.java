@@ -4,15 +4,7 @@ public class FoodTruck {
 	private int truckId = 1;
 	private String truckName;
 	private String foodType;
-	private int rating;
-
-//id is auto assigned from a 'static' field that is incremented as each truck is created
-
-	public void getTrucks(FoodTruck[] array, int numOfTrucks) {
-		for (int i = 0; i < numOfTrucks; i++) {
-			System.out.println(array[i].toString());
-		}
-	}
+	private double rating;
 
 	public String toString() {
 
@@ -43,7 +35,7 @@ public class FoodTruck {
 		this.foodType = foodType;
 	}
 
-	public int getRating() {
+	public double getRating() {
 		return rating;
 	}
 
