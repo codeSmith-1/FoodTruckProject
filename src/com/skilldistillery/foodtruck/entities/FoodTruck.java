@@ -7,7 +7,6 @@ public class FoodTruck {
 	private double rating;
 
 	public String toString() {
-
 		return "Name: " + truckName + " Food: " + foodType + " Rating: " + rating + " Truck ID: " + truckId;
 	}
 

@@ -11,7 +11,6 @@ public class FoodTruckApp {
 
 		FoodTruckApp app = new FoodTruckApp();
 
-		boolean addTrucks = true;
 		int maxTrucks = 5;
 		int numOfTrucks = 0;
 
@@ -86,7 +85,7 @@ public class FoodTruckApp {
 	public void getAverage(FoodTruck[] arr, int numOfTrucks) {
 		double sum = 0;
 		for (int i = 0; i < numOfTrucks; i++) {
-			int rating = arr[i].getRating();
+			double rating = arr[i].getRating();
 			sum += rating;
 		}
 		System.out.println("The average rating is : " + (sum / numOfTrucks));
